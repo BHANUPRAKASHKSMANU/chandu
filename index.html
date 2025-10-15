@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GMU Coding Club</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+/* Marquee Styling */
+.marquee {
+  background-color: #facc15;
+  color: black;
+  font-weight: bold;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Buttons Styling */
+.join-btn, .quiz-btn, #loginBtn {
+  background-color: #8415fa;
+  color: black;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+.join-btn:hover, .quiz-btn:hover, #loginBtn:hover {
+  background-color: #eab308;
+  transform: translateY(-5px);
+}
+
+/* Quiz Section */
+#quizSection {
+  display: none;
+}
+
+/* Login Modal */
+#loginModal {
+  display: none;
+  position: fixed;
+  z-index: 50;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+#loginModalContent {
+  background-color: #1f1f1f;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+#loginModalContent input {
+  width: 80%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  border: none;
+}
+#loginModalContent button {
+  margin-top: 1rem;
+  width: 85%;
+}
+
+/* Smooth scroll for entire page */
+html {
+  scroll-behavior: smooth;
+}
+</style>
+</head>
+<body class="text-white min-h-screen font-sans">
+
+<!-- Marquee Heading -->
+<marquee class="marquee" behavior="scroll" direction="left">
+  Welcome to Innovative Minds
+</marquee>
+
+<!-- Background Video -->
+<video autoplay muted loop playsinline class="fixed top-0 left-0 w-full h-full object-cover -z-10">
+  <source src="background.mp4" type="video/mp4" />
+</video>
+
+<!-- Navbar -->
+<header class="flex justify-between items-center px-6 py-4 bg-pink-700/50 backdrop-blur-sm fixed top-8 left-0 w-full z-20">
+  <div class="flex items-center gap-3">
+    <img src="IMG-20251010-WA0003[1].jpg" alt="GMU Logo" class="w-12 h-12 object-contain rounded-full border-2 border-yellow-400" />
+    <h1 class="text-xl font-bold">GM University SA</h1>
+  </div>
+  <nav class="flex gap-6">
+    <a href="#home" class="hover:text-yellow-300 font-semibold text-yellow-400">Home</a>
+    <a href="events.html" class="hover:text-yellow-300">Events</a>
+    <a href="projects.html" class="hover:text-yellow-300">Projects</a>
+    <a href="#contact" class="hover:text-yellow-300">Contact</a>
+  </nav>
+  <button id="loginBtn">
+    Login
+  </button>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="flex flex-col lg:flex-row justify-between items-center px-10 py-40 pt-52 relative gap-10">
+  <div class="lg:w-1/2 bg-black/50 p-6 rounded-lg backdrop-blur-md text-left">
+    <h2 class="text-4xl font-bold mb-4">Welcome to GM University Coding Club</h2>
+    <p class="text-lg leading-relaxed mb-4">
+      At GM University, we foster a vibrant community of coders, developers, and technology enthusiasts. 
+      Our mission is to inspire innovation, encourage collaboration, and provide hands-on experiences 
+      that shape the future of tech.
+    </p>
+    <p class="text-lg leading-relaxed mb-4">
+      Explore our student affairs, clubs, and activities to find opportunities for growth, learning, and leadership.
+    </p>
+  </div>
+  <div class="lg:w-1/2 flex justify-center lg:justify-end">
+    <img src="WhatsApp Image 2025-10-12 at 12.49.11_fe78721c.jpg" 
+         alt="Coding Club" 
+         class="w-80 h-80 rounded-full object-cover border-4 border-yellow-400 shadow-lg">
+  </div>
+</section>
+
+<!-- Join Now Button -->
+<section class="px-10 my-[-20px] flex justify-start">
+  <a href="#footer" id="joinBtn" class="join-btn">
+     ✅ Join Now
+  </a>
+</section>
+
+<!-- University Overview -->
+<section class="px-10 py-20 text-center">
+  <h2 class="text-3xl font-bold mb-6">GM University Overview</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="bg-black/50 p-6 rounded-lg shadow-lg border border-yellow-400">
+      <h3 class="text-xl font-bold mb-2">Student Affairs</h3>
+      <p class="text-gray-300">Support services, counseling, campus life programs, and student welfare initiatives.</p>
+    </div>
+    <div class="bg-black/50 p-6 rounded-lg shadow-lg border border-yellow-400">
+      <h3 class="text-xl font-bold mb-2">Clubs & Societies</h3>
+      <p class="text-gray-300">Diverse student clubs including coding, robotics, arts, sports, and community engagement.</p>
+    </div>
+    <div class="bg-black/50 p-6 rounded-lg shadow-lg border border-yellow-400">
+      <h3 class="text-xl font-bold mb-2">Academics & Research</h3>
+      <p class="text-gray-300">Cutting-edge research programs, workshops, seminars, and collaborations with industry experts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Technical Faculty Coordinators -->
+<center><h1 class="text-2xl font-bold">Technical Faculty Coordinators</h1></center>
+<section class="px-10 py-20 flex justify-center gap-14">
+  <div class="text-center">
+    <img src="WhatsApp Image 2025-10-15 at 00.07.50_e5dea5bf.jpg" class="w-40 h-40 rounded-full border-4 border-yellow-400 shadow-lg object-cover">
+    <p class="mt-4 font-semibold">Mr. Imran Khan<br>President – Coding Club</p>
+  </div>
+  <div class="text-center">
+    <img src="assets/pic2.jpg" class="w-40 h-40 rounded-full border-4 border-yellow-400 shadow-lg object-cover">
+    <p class="mt-4 font-semibold">Mrs. Kavyashree P.N<br>President – Coding Club</p>
+  </div>
+  <div class="text-center">
+    <img src="assets/pic3.jpg" class="w-40 h-40 rounded-full border-4 border-yellow-400 shadow-lg object-cover">
+    <p class="mt-4 font-semibold"> Secretary– Coding Club</p>
+  </div>
+</section>
+
+<!-- Quiz Button -->
+<section class="px-10 py-10 flex justify-center">
+  <button id="quizBtn" class="quiz-btn">
+    📝 Take Quiz
+  </button>
+</section>
+
+<!-- Quiz Section -->
+<section id="quizSection" class="px-10 py-20 bg-black/50 backdrop-blur-sm text-center rounded-lg mx-10 mb-10">
+  <h2 class="text-2xl font-bold mb-6">Technical Quiz</h2>
+  <form id="quizForm" class="flex flex-col gap-6 text-left max-w-2xl mx-auto">
+    <div>
+      <p>1. What does HTML stand for?</p>
+      <label><input type="radio" name="q1" value="a"> Hyper Text Markup Language</label><br>
+      <label><input type="radio" name="q1" value="b"> High Transfer Machine Language</label><br>
+      <label><input type="radio" name="q1" value="c"> Hyperlink Text Management Language</label>
+    </div>
+    <div>
+      <p>2. What is the correct HTML element for inserting a line break?</p>
+      <label><input type="radio" name="q2" value="a"> &lt;br&gt;</label><br>
+      <label><input type="radio" name="q2" value="b"> &lt;lb&gt;</label><br>
+      <label><input type="radio" name="q2" value="c"> &lt;break&gt;</label>
+    </div>
+    <div>
+      <p>3. Which CSS property changes text color?</p>
+      <label><input type="radio" name="q3" value="a"> font-color</label><br>
+      <label><input type="radio" name="q3" value="b"> color</label><br>
+      <label><input type="radio" name="q3" value="c"> text-color</label>
+    </div>
+    <div>
+      <p>4. Which JavaScript method is used to log messages to the console?</p>
+      <label><input type="radio" name="q4" value="a"> console.print()</label><br>
+      <label><input type="radio" name="q4" value="b"> console.log()</label><br>
+      <label><input type="radio" name="q4" value="c"> log.console()</label>
+    </div>
+    <div>
+      <p>5. Which HTML attribute is used to define inline styles?</p>
+      <label><input type="radio" name="q5" value="a"> class</label><br>
+      <label><input type="radio" name="q5" value="b"> style</label><br>
+      <label><input type="radio" name="q5" value="c"> id</label>
+    </div>
+    <button type="button" id="submitQuiz" class="quiz-btn self-center">Submit Answers</button>
+  </form>
+  <p id="quizResult" class="mt-6 text-lg font-bold"></p>
+</section>
+
+<!-- Newsletter -->
+<section id="newsletter" class="px-10 py-16 text-center">
+  <h2 class="text-2xl font-bold mb-4">Subscribe for Announcements & Updates</h2>
+  <div class="flex justify-center">
+    <input type="email" placeholder="Enter your email" class="px-4 py-2 rounded-l-lg text-black w-64">
+    <button class="bg-purple-600 px-4 py-2 rounded-r-lg hover:bg-purple-500">Subscribe</button>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="px-10 py-16 text-center bg-black/50 backdrop-blur-sm rounded-lg mx-10 mb-10">
+  <h2 class="text-2xl font-bold mb-4">Contact Us</h2>
+  <p class="mb-4">Email:  | Phone: +gmu.ac.sa91 12345 67890</p>
+  <p>Address: GM University Campus, India</p>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-black/50 backdrop-blur-sm py-8 mt-20">
+  <div class="flex flex-col items-center gap-4">
+    <p class="font-semibold text-lg">Connect with us</p>
+    <div class="flex gap-6">
+      <a href="https://facebook.com" target="_blank" class="hover:text-blue-500">Facebook</a>
+      <a href="https://linkedin.com" target="_blank" class="hover:text-blue-400">LinkedIn</a>
+      <a href="https://instagram.com" target="_blank" class="hover:text-pink-500">Instagram</a>
+    </div>
+    <p class="text-gray-400 mt-4">&copy; 2025 GM University Coding Club. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Login Modal -->
+<div id="loginModal" class="flex">
+  <div id="loginModalContent">
+    <h2 class="text-2xl font-bold mb-4">Login</h2>
+    <input type="text" placeholder="Username" id="username"><br>
+    <input type="password" placeholder="Password" id="password"><br>
+    <button id="loginSubmit" class="join-btn">Login</button><br>
+    <button id="loginClose" class="mt-4 join-btn">Close</button>
+  </div>
+</div>
+
+<script>
+// Smooth scroll handled via CSS
+
+// Show quiz section
+document.getElementById('quizBtn').addEventListener('click', function() {
+  const quizSection = document.getElementById('quizSection');
+  quizSection.style.display = 'block';
+  quizSection.scrollIntoView({ behavior: 'smooth' });
+});
+
+// Quiz functionality
+document.getElementById('submitQuiz').addEventListener('click', function() {
+  const answers = { q1: 'a', q2: 'a', q3: 'b', q4: 'b', q5: 'b' };
+  let score = 0;
+  for (let q in answers) {
+    const selected = document.querySelector(`input[name="${q}"]:checked`);
+    if (selected && selected.value === answers[q]) score++;
+  }
+  document.getElementById('quizResult').textContent = `Your Score: ${score} / 5`;
+});
+
+// Login modal functionality
+const loginBtn = document.getElementById('loginBtn');
+const loginModal = document.getElementById('loginModal');
+const loginClose = document.getElementById('loginClose');
+loginBtn.addEventListener('click', () => loginModal.style.display = 'flex');
+loginClose.addEventListener('click', () => loginModal.style.display = 'none');
+loginModal.addEventListener('click', e => { if(e.target === loginModal) loginModal.style.display = 'none'; });
+</script>
+
+</body>
+</html>
